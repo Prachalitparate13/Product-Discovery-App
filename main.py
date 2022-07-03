@@ -49,3 +49,12 @@ soup=BeautifulSoup(source.text,'html.parser')
 temp = soup.find_all("div",class_="yuRUbf")
     
 print( temp ) 
+# check this its giving the results
+
+from selenium import webdriver
+driver = webdriver.Chrome()
+driver.get('https://www.google.com/search?q=pineapple,%20Pune')
+for element in driver.find_elements(By.CLASS_NAME,'yuRUbf'):
+    elements = element.find_elements(By.TAG_NAME, 'a')
+    for e in elements:
+        print(e.get_attribute('href'))
